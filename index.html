@@ -63,27 +63,43 @@
     }
 
     /* ==========================================================================
-       2. ACCESSIBLE SKIP LINKS & HIGH-CONTRAST FOCUS RINGS
+       2. VISUALLY HIDDEN SCREEN-READER SKIP BUTTONS (VISIBLE ONLY ON KEYBOARD FOCUS)
        ========================================================================== */
-    .skip-links-bar {
-      position: relative;
+    .sr-skip-control {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+      background-color: var(--accent-cyan);
+      color: var(--bg-pure-black);
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
       z-index: 1000;
     }
 
-    .skip-link {
-      position: absolute;
-      top: -120px;
-      left: 16px;
-      background-color: var(--accent-cyan);
-      color: var(--bg-pure-black);
-      font-weight: 700;
-      padding: 10px 18px;
-      border-radius: 6px;
-      text-decoration: none;
-    }
-
-    .skip-link:focus {
+    .sr-skip-control:focus {
+      position: fixed;
       top: 12px;
+      left: 16px;
+      width: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      clip: auto;
+      white-space: normal;
+      padding: 9px 16px;
+      border-radius: 6px;
+      outline: 2px solid #ffffff !important;
+      outline-offset: 2px !important;
+      box-shadow: 0 0 14px rgba(0, 229, 255, 0.85) !important;
     }
 
     a:focus-visible,
@@ -96,7 +112,7 @@
     }
 
     /* ==========================================================================
-       3. HERO HEADER WITH PROPER 16:9 DESKTOP & 9:16 MOBILE BACKGROUND
+       3. HERO HEADER (DESKTOP 16:9 & MOBILE 9:16 RESPONSIVE ARCHITECTURE)
        ========================================================================== */
     .portfolio-header {
       position: relative;
@@ -108,7 +124,7 @@
     .hero-stage {
       position: relative;
       width: 100%;
-      min-height: 320px;
+      min-height: 315px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -150,13 +166,13 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      padding: 20px 28px 28px 24px;
+      padding: 20px 28px 26px 24px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
     }
 
-    /* Top-Left Corner: AI Core Animation + Typing Title */
+    /* Top-Left Brand Row */
     .brand-top-left {
       display: flex;
       align-items: center;
@@ -201,11 +217,11 @@
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
     }
 
-    /* Center-Middle-Right Identity & Labeled Custom Icon Links */
-    .profile-center-right-wrapper {
+    /* Desktop Layout: Center-Middle-Right Identity + Icons Underneath */
+    .hero-main-row {
       width: 100%;
       max-width: 1120px;
-      margin: 4px auto 0 auto;
+      margin: 2px auto 0 auto;
       display: flex;
       justify-content: flex-end;
       padding-right: 6%;
@@ -217,7 +233,7 @@
       align-items: center;
       text-align: center;
       gap: 6px;
-      padding: 8px 14px;
+      padding: 6px 12px;
       border-radius: 10px;
     }
 
@@ -227,10 +243,10 @@
       letter-spacing: 0.4px;
       line-height: 1.15;
       color: var(--text-pure-white);
+      white-space: nowrap;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
     }
 
-    /* Italic Tagline & Subtitle */
     .profile-motto {
       color: var(--accent-cyan);
       font-size: 1.15rem;
@@ -248,25 +264,25 @@
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
     }
 
-    /* Custom Action Icons (Desktop: 3 in a row | Mobile: 1 top, 2 below) */
+    /* Custom Action Icons (Desktop: Horizontal Row | Mobile: Left Column Below AI Core) */
     .action-buttons {
       display: flex;
       align-items: flex-start;
       justify-content: center;
       gap: 26px;
       flex-wrap: wrap;
-      margin-top: 14px;
+      margin-top: 12px;
     }
 
     .icon-action-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       text-decoration: none;
       color: var(--text-pure-white);
-      min-width: 118px;
-      padding: 6px 8px;
+      min-width: 114px;
+      padding: 4px 6px;
       border-radius: 12px;
       transition: transform 0.15s ease;
     }
@@ -279,8 +295,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 64px;
-      height: 64px;
+      width: 62px;
+      height: 62px;
       border-radius: 50%;
       background-color: rgba(12, 16, 22, 0.95);
       border: 2px solid rgba(0, 229, 255, 0.45);
@@ -303,9 +319,9 @@
 
     .icon-action-label {
       font-family: var(--font-icon-label);
-      font-size: 0.94rem;
+      font-size: 0.92rem;
       font-weight: 700;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.35px;
       color: var(--text-pure-white);
       text-align: center;
       line-height: 1.25;
@@ -367,7 +383,7 @@
        5. MAIN CONTENT & PANELS (ALL TEXT IN TIMES NEW ROMAN)
        ========================================================================== */
     .main-content {
-      padding: 30px 32px 48px 32px;
+      padding: 28px 32px 48px 32px;
       min-height: 460px;
       max-width: 1200px;
       margin: 0 auto;
@@ -381,8 +397,7 @@
     .tab-panel p,
     .tab-panel a,
     .tab-panel span,
-    .tab-panel li,
-    .tab-panel button {
+    .tab-panel li {
       font-family: var(--font-serif);
     }
 
@@ -390,44 +405,13 @@
       display: none !important;
     }
 
-    .panel-header-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 22px;
-    }
-
     .section-heading {
       font-size: 1.65rem;
       font-weight: 700;
       border-left: 4px solid var(--accent-cyan);
       padding-left: 12px;
+      margin-bottom: 22px;
       color: var(--text-pure-white);
-    }
-
-    .panel-skip-btn {
-      background-color: transparent;
-      border: 1px solid var(--accent-outline-cyan);
-      color: var(--accent-cyan);
-      padding: 7px 14px;
-      border-radius: 6px;
-      font-size: 0.96rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background-color 0.2s ease, color 0.2s ease;
-    }
-
-    .panel-skip-btn:hover {
-      background-color: var(--accent-cyan);
-      color: var(--bg-pure-black);
-    }
-
-    .panel-end-row {
-      margin-top: 26px;
-      display: flex;
-      justify-content: flex-end;
     }
 
     /* ==========================================================================
@@ -587,124 +571,143 @@
     }
 
     /* ==========================================================================
-       10. MOBILE & TABLET RESPONSIVE STYLING (9:16 MOBILE JPG + 1 TOP, 2 BELOW ICONS)
+       10. MOBILE VIEW:
+           - Top-Left: AI Core + "Personal Portfolio"
+           - Left Column Below AI Core: Connect with me, Mail me, Explore GitHub
+           - Middle-Right Side: Single-line "Navan Krishna P.P" + Italic Taglines
+           - Tabs Brought Up Right Underneath
        ========================================================================== */
     @media (max-width: 860px) {
       .hero-stage {
-        min-height: 460px;
-      }
-
-      .header-bg-img {
-        object-fit: cover;
-        object-position: center center;
+        min-height: 335px;
       }
 
       .header-bg-overlay {
         background: linear-gradient(
           180deg,
           rgba(0, 0, 0, 0.25) 0%,
-          rgba(0, 0, 0, 0.52) 48%,
+          rgba(0, 0, 0, 0.56) 55%,
           rgba(0, 0, 0, 0.92) 100%
         );
       }
 
       .header-inner {
-        padding: 16px 14px 24px 14px;
-        gap: 24px;
+        padding: 14px 12px 18px 12px;
+        gap: 14px;
       }
 
       .aicore-ring {
-        width: 52px;
-        height: 52px;
+        width: 48px;
+        height: 48px;
       }
 
       .brand-title-wrapper {
-        min-width: 195px;
+        min-width: 185px;
       }
 
       .brand-typing-title {
-        font-size: 1.38rem;
+        font-size: 1.32rem;
       }
 
-      /* Mobile Name & Tagline: Slightly Right of Center-Middle Screen */
-      .profile-center-right-wrapper {
-        justify-content: flex-end;
-        padding-right: 3%;
-        padding-left: 8%;
-        margin-top: 8px;
+      /* Two-column mobile hero row: Left = 3 vertical icons below AI Core | Right = Name & Taglines */
+      .hero-main-row {
+        display: grid;
+        grid-template-columns: 98px 1fr;
+        align-items: center;
+        gap: 10px;
+        padding-right: 0;
+        margin-top: 2px;
       }
 
+      /* Mobile Name & Taglines on Middle-Right (Single Line Name) */
       .profile-identity-block {
+        grid-column: 2;
+        grid-row: 1;
         align-items: center;
         text-align: center;
+        padding: 4px 4px;
+        gap: 6px;
         width: 100%;
-        max-width: 340px;
       }
 
       .profile-name {
-        font-size: 1.82rem;
+        font-size: clamp(1.22rem, 5.2vw, 1.65rem);
+        white-space: nowrap;
         line-height: 1.2;
       }
 
       .profile-motto {
-        font-size: 1.05rem;
+        font-size: 0.96rem;
       }
 
       .profile-subtext {
-        font-size: 0.94rem;
+        font-size: 0.85rem;
+        line-height: 1.4;
       }
 
-      /* Mobile Icons Pyramid Layout: 1 Top (LinkedIn) + 2 Below (GitHub & Gmail) */
+      /* Mobile Icons Column on Left Below AI Core: Connect with me -> Mail me -> Explore GitHub */
       .action-buttons {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(120px, 1fr));
-        gap: 16px 18px;
-        justify-items: center;
+        grid-column: 1;
+        grid-row: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        margin-top: 0;
         width: 100%;
-        max-width: 300px;
-        margin-top: 16px;
-      }
-
-      .icon-action-item:first-child {
-        grid-column: 1 / -1;
       }
 
       .icon-action-item {
-        min-width: 115px;
-        padding: 6px;
+        min-width: 92px;
+        padding: 2px;
+        gap: 4px;
       }
 
-      /* Larger & Higher-Contrast Icons on Mobile */
+      /* Visual Order on Mobile: 1. Connect with me, 2. Mail me, 3. Explore GitHub */
+      .icon-linkedin {
+        order: 1;
+      }
+
+      .icon-gmail {
+        order: 2;
+      }
+
+      .icon-github {
+        order: 3;
+      }
+
       .icon-circle-box {
-        width: 72px;
-        height: 72px;
+        width: 52px;
+        height: 52px;
         background-color: rgba(14, 20, 28, 0.98);
-        border: 2.5px solid var(--accent-cyan);
-        box-shadow: 0 0 18px rgba(0, 229, 255, 0.42);
+        border: 2px solid var(--accent-cyan);
+        box-shadow: 0 0 14px rgba(0, 229, 255, 0.38);
       }
 
       .icon-circle-box img {
-        width: 40px;
-        height: 40px;
+        width: 28px;
+        height: 28px;
         filter: brightness(1.3) contrast(1.25);
       }
 
       .icon-action-label {
-        font-size: 0.95rem;
+        font-size: 0.75rem;
+        line-height: 1.15;
       }
 
       .tab-list {
-        padding: 0 16px;
-        gap: 20px;
+        padding: 0 14px;
+        gap: 18px;
       }
 
       .tab-btn {
-        font-size: 1.28rem;
-        padding: 11px 4px;
+        font-size: 1.25rem;
+        padding: 10px 4px;
       }
 
       .main-content {
-        padding: 22px 16px 36px 16px;
+        padding: 20px 14px 36px 14px;
       }
     }
 
@@ -720,23 +723,21 @@
       }
 
       .about-text {
-        font-size: 1.12rem;
+        font-size: 1.1rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Skip Links -->
-  <div class="skip-links-bar">
-    <a href="#profile-identity" class="skip-link" id="skipToProfile">Skip to Name and Tagline</a>
-    <a href="#section-nav" class="skip-link" id="skipToTabs">Skip to Tabs Area</a>
-  </div>
+  <!-- Screen-Reader-Only Top Skip Controls (Hidden visually, active on keyboard focus) -->
+  <a href="#profile-identity" class="sr-skip-control" id="skipToProfile">Skip to Name and Tagline</a>
+  <a href="#section-nav" class="sr-skip-control" id="skipToTabs">Skip to Tabs Area</a>
 
   <!-- Top Header -->
   <header class="portfolio-header" role="banner">
     <div class="hero-stage">
-      <!-- Background Image Layer: 16:9 desktopui.jpg on Desktop/Laptop, 9:16 mobileui.jpg on Mobile -->
+      <!-- Responsive Background Image Layer -->
       <div class="header-bg-media" aria-hidden="true">
         <picture>
           <source media="(max-width: 860px)" srcset="mobileui.jpg">
@@ -759,35 +760,35 @@
           </div>
         </div>
 
-        <!-- Center-Middle-Right: Name (No Verification Mark), Italic Taglines & Custom Labeled Icons -->
-        <div class="profile-center-right-wrapper">
+        <!-- Hero Main Row (Desktop: Center-Right Identity + Row Icons | Mobile: Left Icons Below AI Core + Right Single-Line Name) -->
+        <div class="hero-main-row">
           <div class="profile-identity-block" id="profile-identity" tabindex="0" role="region" aria-label="Navan Krishna P.P — Accessibility For Everyone. Building inclusive, screen-reader-first, and human-centered digital tools.">
             <h1 class="profile-name serif-font">Navan Krishna P.P</h1>
             <p class="profile-motto">Accessibility For Everyone</p>
             <p class="profile-subtext">Building inclusive, screen-reader-first, and human-centered digital tools.</p>
+          </div>
 
-            <div class="action-buttons" role="group" aria-label="Social and Contact Links">
-              <a href="https://www.linkedin.com/in/navankrishna-pp/" target="_blank" rel="noopener noreferrer" class="icon-action-item" aria-label="LinkedIn — Connect with me (opens in a new tab)">
-                <span class="icon-circle-box" aria-hidden="true">
-                  <img src="linkedin.png" alt="">
-                </span>
-                <span class="icon-action-label" aria-hidden="true">Connect with me</span>
-              </a>
+          <div class="action-buttons" role="group" aria-label="Social and Contact Links">
+            <a href="https://www.linkedin.com/in/navankrishna-pp/" target="_blank" rel="noopener noreferrer" class="icon-action-item icon-linkedin" aria-label="LinkedIn — Connect with me (opens in a new tab)">
+              <span class="icon-circle-box" aria-hidden="true">
+                <img src="linkedin.png" alt="">
+              </span>
+              <span class="icon-action-label" aria-hidden="true">Connect with me</span>
+            </a>
 
-              <a href="https://github.com/navankrishnapp-lab" target="_blank" rel="noopener noreferrer" class="icon-action-item" aria-label="GitHub — Explore GitHub (opens in a new tab)">
-                <span class="icon-circle-box" aria-hidden="true">
-                  <img src="github.png" alt="">
-                </span>
-                <span class="icon-action-label" aria-hidden="true">Explore GitHub</span>
-              </a>
+            <a href="mailto:navankrishnapp@gmail.com" class="icon-action-item icon-gmail" aria-label="Gmail — Mail me at navankrishnapp@gmail.com">
+              <span class="icon-circle-box" aria-hidden="true">
+                <img src="gmail.png" alt="">
+              </span>
+              <span class="icon-action-label" aria-hidden="true">Mail me</span>
+            </a>
 
-              <a href="mailto:navankrishnapp@gmail.com" class="icon-action-item" aria-label="Gmail — Mail me at navankrishnapp@gmail.com">
-                <span class="icon-circle-box" aria-hidden="true">
-                  <img src="gmail.png" alt="">
-                </span>
-                <span class="icon-action-label" aria-hidden="true">Mail me</span>
-              </a>
-            </div>
+            <a href="https://github.com/navankrishnapp-lab" target="_blank" rel="noopener noreferrer" class="icon-action-item icon-github" aria-label="GitHub — Explore GitHub (opens in a new tab)">
+              <span class="icon-circle-box" aria-hidden="true">
+                <img src="github.png" alt="">
+              </span>
+              <span class="icon-action-label" aria-hidden="true">Explore GitHub</span>
+            </a>
           </div>
         </div>
       </div>
@@ -813,10 +814,9 @@
 
     <!-- 1. PROJECTS TAB PANEL -->
     <section id="panel-projects" aria-labelledby="heading-projects" class="tab-panel" data-tab-id="tab-projects">
-      <div class="panel-header-row">
-        <h2 class="section-heading" id="heading-projects" tabindex="0">Accessibility-First Projects</h2>
-        <button type="button" class="panel-skip-btn" data-return-tab="tab-projects">Skip to Tabs Area</button>
-      </div>
+      <h2 class="section-heading" id="heading-projects" tabindex="0">Accessibility-First Projects</h2>
+      <button type="button" class="sr-skip-control panel-skip-btn" data-return-tab="tab-projects" aria-label="Skip Projects section and return to Tabs Area">Skip to Tabs Area</button>
+
       <div class="grid-layout">
 
         <article class="card" tabindex="0" aria-label="Project 1: Navic Echo. An accessibility-first typing practice web app built for screen reader users. It announces each word along with clear letter-by-letter spelling so blind and visually impaired learners can build typing speed and accuracy with zero visual barriers.">
@@ -868,17 +868,14 @@
         </article>
 
       </div>
-      <div class="panel-end-row">
-        <button type="button" class="panel-skip-btn panel-end-return" data-return-tab="tab-projects">End of Projects — Return to Tabs Area</button>
-      </div>
+      <button type="button" class="sr-skip-control panel-skip-btn panel-end-return" data-return-tab="tab-projects" aria-label="End of Projects section — Return to Tabs Area">Return to Tabs Area</button>
     </section>
 
     <!-- 2. BADGES TAB PANEL -->
     <section id="panel-badges" aria-labelledby="heading-badges" class="tab-panel" data-tab-id="tab-badges" hidden>
-      <div class="panel-header-row">
-        <h2 class="section-heading" id="heading-badges" tabindex="0">Microsoft Learn Badges</h2>
-        <button type="button" class="panel-skip-btn" data-return-tab="tab-badges">Skip to Tabs Area</button>
-      </div>
+      <h2 class="section-heading" id="heading-badges" tabindex="0">Microsoft Learn Badges</h2>
+      <button type="button" class="sr-skip-control panel-skip-btn" data-return-tab="tab-badges" aria-label="Skip Badges section and return to Tabs Area">Skip to Tabs Area</button>
+
       <div class="clickable-list-grid">
 
         <a href="https://learn.microsoft.com/api/achievements/share/en-in/NavanKrishnaPP-2050/ABYMKQZ7?sharingId=DA2CA8650FD9BC88" target="_blank" rel="noopener noreferrer" class="clickable-box-link" aria-label="Build Accessible SharePoint Sites — Click to view on Microsoft Learn (opens in a new tab)">
@@ -907,17 +904,14 @@
         </a>
 
       </div>
-      <div class="panel-end-row">
-        <button type="button" class="panel-skip-btn panel-end-return" data-return-tab="tab-badges">End of Badges — Return to Tabs Area</button>
-      </div>
+      <button type="button" class="sr-skip-control panel-skip-btn panel-end-return" data-return-tab="tab-badges" aria-label="End of Badges section — Return to Tabs Area">Return to Tabs Area</button>
     </section>
 
     <!-- 3. SKILLS TAB PANEL -->
     <section id="panel-skills" aria-labelledby="heading-skills" class="tab-panel" data-tab-id="tab-skills" hidden>
-      <div class="panel-header-row">
-        <h2 class="section-heading" id="heading-skills" tabindex="0">Core Skills</h2>
-        <button type="button" class="panel-skip-btn" data-return-tab="tab-skills">Skip to Tabs Area</button>
-      </div>
+      <h2 class="section-heading" id="heading-skills" tabindex="0">Core Skills</h2>
+      <button type="button" class="sr-skip-control panel-skip-btn" data-return-tab="tab-skills" aria-label="Skip Skills section and return to Tabs Area">Skip to Tabs Area</button>
+
       <ul class="skills-grid" aria-label="Core Skills List">
         <li class="skill-pill-card" tabindex="0">Prompt Engineering</li>
         <li class="skill-pill-card" tabindex="0">AI-Assisted Development</li>
@@ -931,33 +925,27 @@
         <li class="skill-pill-card" tabindex="0">Content Creation</li>
         <li class="skill-pill-card" tabindex="0">AI Assisted Solution Building</li>
       </ul>
-      <div class="panel-end-row">
-        <button type="button" class="panel-skip-btn panel-end-return" data-return-tab="tab-skills">End of Skills — Return to Tabs Area</button>
-      </div>
+      <button type="button" class="sr-skip-control panel-skip-btn panel-end-return" data-return-tab="tab-skills" aria-label="End of Skills section — Return to Tabs Area">Return to Tabs Area</button>
     </section>
 
     <!-- 4. ABOUT ME TAB PANEL -->
     <section id="panel-about" aria-labelledby="heading-about" class="tab-panel" data-tab-id="tab-about" hidden>
-      <div class="panel-header-row">
-        <h2 class="section-heading" id="heading-about" tabindex="0">About Me</h2>
-        <button type="button" class="panel-skip-btn" data-return-tab="tab-about">Skip to Tabs Area</button>
-      </div>
+      <h2 class="section-heading" id="heading-about" tabindex="0">About Me</h2>
+      <button type="button" class="sr-skip-control panel-skip-btn" data-return-tab="tab-about" aria-label="Skip About Me section and return to Tabs Area">Skip to Tabs Area</button>
+
       <article class="about-box" tabindex="0">
         <p class="about-text">
           I am passionate about technology, accessibility-oriented research, and AI-assisted innovation. My goal is to explore ideas, solve real-world accessibility challenges, and contribute to building a more inclusive digital space where technology is accessible to everyone, regardless of their abilities. I believe accessibility is not an option but a fundamental part of a better digital future.
         </p>
       </article>
-      <div class="panel-end-row">
-        <button type="button" class="panel-skip-btn panel-end-return" data-return-tab="tab-about">End of About Me — Return to Tabs Area</button>
-      </div>
+      <button type="button" class="sr-skip-control panel-skip-btn panel-end-return" data-return-tab="tab-about" aria-label="End of About Me section — Return to Tabs Area">Return to Tabs Area</button>
     </section>
 
     <!-- 5. SOURCE-CODES TAB PANEL -->
     <section id="panel-source" aria-labelledby="heading-source" class="tab-panel" data-tab-id="tab-source" hidden>
-      <div class="panel-header-row">
-        <h2 class="section-heading" id="heading-source" tabindex="0">Open-Source Repositories</h2>
-        <button type="button" class="panel-skip-btn" data-return-tab="tab-source">Skip to Tabs Area</button>
-      </div>
+      <h2 class="section-heading" id="heading-source" tabindex="0">Open-Source Repositories</h2>
+      <button type="button" class="sr-skip-control panel-skip-btn" data-return-tab="tab-source" aria-label="Skip Source-Codes section and return to Tabs Area">Skip to Tabs Area</button>
+
       <div class="clickable-list-grid">
 
         <a href="https://github.com/navankrishnapp-lab/NavicEcho" target="_blank" rel="noopener noreferrer" class="clickable-box-link" aria-label="Navic Echo — Click To View source code on GitHub (opens in a new tab)">
@@ -991,9 +979,7 @@
         </a>
 
       </div>
-      <div class="panel-end-row">
-        <button type="button" class="panel-skip-btn panel-end-return" data-return-tab="tab-source">End of Source-Codes — Return to Tabs Area</button>
-      </div>
+      <button type="button" class="sr-skip-control panel-skip-btn panel-end-return" data-return-tab="tab-source" aria-label="End of Source-Codes section — Return to Tabs Area">Return to Tabs Area</button>
     </section>
 
   </main>
@@ -1085,7 +1071,7 @@
         }
 
         if (srStatus) {
-          srStatus.textContent = `${targetBtn.textContent.trim()} tab selected. Press Tab to step through all items inside, or press Skip to Tabs Area.`;
+          srStatus.textContent = `${targetBtn.textContent.trim()} tab selected. Press Tab to read items inside.`;
         }
       }
 
