@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navan Krishna P.P | Personal Portfolio</title>
+  <meta name="description" content="Personal Portfolio of Navan Krishna P.P — Accessibility For Everyone. Screen-reader-first open-source projects, badges, skills, and repositories.">
+  <style>
+    /* ==========================================================================
+       1. ROOT VARIABLES & HIGH-CONTRAST PALETTE
+       ========================================================================== */
+    :root {
+      --bg-pure-black: #000000;
+      --bg-card: #0a0c10;
+      --bg-card-hover: #0f131a;
+      --bg-card-border: #1f2937;
+      --text-pure-white: #ffffff;
+      --text-muted: #c8d3e0;
+      --accent-cyan: #00e5ff;
+      --accent-outline-cyan: rgba(0, 229, 255, 0.45);
+      --focus-ring: #00e5ff;
+
+      --font-serif: "Times New Roman", Times, serif;
+      --font-sans: "Calibri", "Segoe UI", Arial, sans-serif;
+      --font-display: "Georgia", "Palatino Linotype", "Book Antiqua", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html, body {
+      background-color: var(--bg-pure-black);
+      color: var(--text-pure-white);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .serif-font {
+      font-family: var(--font-serif);
+    }
+
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    /* ==========================================================================
+       2. ACCESSIBLE SKIP LINKS & HIGH-CONTRAST FOCUS RINGS
+       ========================================================================== */
+    .skip-links-bar {
+      position: relative;
+      z-index: 1000;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -120px;
+      left: 16px;
+      background-color: var(--accent-cyan);
+      color: var(--bg-pure-black);
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    [tabindex="0"]:focus-visible,
+    [tabindex="-1"]:focus-visible {
+      outline: 2px solid var(--focus-ring) !important;
+      outline-offset: 4px !important;
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.75) !important;
+    }
+
+    /* ==========================================================================
+       3. HERO HEADER WITH 16:9 DESKTOP & 9:16 MOBILE BACKGROUND
+       ========================================================================== */
+    .portfolio-header {
+      position: relative;
+      width: 100%;
+      background-color: var(--bg-pure-black);
+      border-bottom: 1.5px solid var(--bg-card-border);
+    }
+
+    .hero-stage {
+      position: relative;
+      width: 100%;
+      min-height: 310px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      background-color: var(--bg-pure-black);
+    }
+
+    .header-bg-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .header-bg-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
+
+    .header-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.48) 0%,
+        rgba(0, 0, 0, 0.65) 60%,
+        rgba(0, 0, 0, 0.94) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .header-inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 20px 28px 26px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* Top-Left Corner: AI Core + Typing Title */
+    .brand-top-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      align-self: flex-start;
+    }
+
+    .aicore-ring {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid var(--text-pure-white);
+      box-shadow: 0 0 14px rgba(0, 229, 255, 0.5);
+      overflow: hidden;
+      background-color: var(--bg-pure-black);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .aicore-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-title-wrapper {
+      min-width: 240px;
+      display: flex;
+      align-items: center;
+    }
+
+    .brand-typing-title {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      color: var(--text-pure-white);
+      line-height: 1.2;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    }
+
+    /* Center-Middle-Right Identity & Labeled Custom Icon Links */
+    .profile-center-right-wrapper {
+      width: 100%;
+      max-width: 1120px;
+      margin: 4px auto 0 auto;
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 6%;
+    }
+
+    .profile-identity-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 10px;
+    }
+
+    .profile-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .profile-name {
+      font-size: 2.3rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      line-height: 1.15;
+      color: var(--text-pure-white);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.92);
+    }
+
+    .verified-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--text-muted);
+      color: var(--bg-pure-black);
+      font-size: 0.82rem;
+      font-weight: 700;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    .profile-motto {
+      color: var(--accent-cyan);
+      font-size: 1.12rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.92);
+    }
+
+    .profile-subtext {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.45;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.92);
+    }
+
+    .action-buttons {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .icon-action-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text-pure-white);
+      min-width: 112px;
+      padding: 6px 8px;
+      border-radius: 12px;
+      transition: transform 0.15s ease;
+    }
+
+    .icon-action-item:hover {
+      transform: translateY(-2px);
+    }
+
+    .icon-circle-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: rgba(10, 12, 16, 0.9);
+      border: 1.5px solid var(--bg-card-border);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .icon-action-item:hover .icon-circle-box {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.45);
+    }
+
+    .icon-circle-box img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .icon-action-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-pure-white);
+      text-align: center;
+      line-height: 1.25;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.95);
+    }
+
+    .icon-action-item:hover .icon-action-label {
+      color: var(--accent-cyan);
+    }
+
+    /* ==========================================================================
+       4. SECTION NAVIGATION TABS
+       ========================================================================== */
+    .tabs-nav {
+      position: relative;
+      z-index: 2;
+      background-color: var(--bg-pure-black);
+      border-top: 1px solid var(--bg-card-border);
+      width: 100%;
+    }
+
+    .tab-list {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      justify-content: flex-start;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--bg-card-border) var(--bg-pure-black);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: var(--text-muted);
+      padding: 14px 6px;
+      font-family: var(--font-sans);
+      font-size: 1.08rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-pure-white);
+    }
+
+    .tab-btn.active {
+      color: var(--text-pure-white);
+      border-bottom-color: var(--accent-cyan);
+    }
+
+    /* ==========================================================================
+       5. MAIN CONTENT & PANELS
+       ========================================================================== */
+    .main-content {
+      padding: 30px 32px 48px 32px;
+      min-height: 460px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .tab-panel[hidden] {
+      display: none !important;
+    }
+
+    .panel-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .section-heading {
+      font-size: 1.55rem;
+      border-left: 4px solid var(--accent-cyan);
+      padding-left: 12px;
+      color: var(--text-pure-white);
+    }
+
+    .panel-skip-btn {
+      background-color: transparent;
+      border: 1px solid var(--accent-outline-cyan);
+      color: var(--accent-cyan);
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .panel-skip-btn:hover {
+      background-color: var(--accent-cyan);
+      color: var(--bg-pure-black);
+    }
+
+    .panel-end-row {
+      margin-top: 26px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    /* ==========================================================================
+       6. TOP-TO-BOTTOM CARD GRID (PROJECTS)
+       ========================================================================== */
+    .grid-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 10px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--accent-outline-cyan);
+      background-color: var(--bg-card-hover);
+    }
+
+    .item-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-pure-white);
+    }
+
+    .item-desc {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .card-action-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      padding: 9px 18px;
+      border: 1px solid var(--accent-cyan);
+      border-radius: 6px;
+      color: var(--accent-cyan);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.96rem;
+      margin-top: auto;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .card-action-link:hover {
+      background-color: var(--accent-cyan);
+      color: var(--bg-pure-black);
+    }
+
+    /* ==========================================================================
+       7. BADGES & SOURCE-CODES CLICKABLE ROWS / CARDS
+       ========================================================================== */
+    .clickable-list-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 16px;
+    }
+
+    .clickable-box-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background-color: var(--bg-card);
+      border: 1.5px solid var(--bg-card-border);
+      border-radius: 10px;
+      padding: 20px 22px;
+      text-decoration: none;
+      color: var(--text-pure-white);
+      transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .clickable-box-link:hover {
+      border-color: var(--accent-cyan);
+      background-color: var(--bg-card-hover);
+      box-shadow: 0 0 14px rgba(0, 229, 255, 0.2);
+    }
+
+    .box-link-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text-pure-white);
+      line-height: 1.4;
+    }
+
+    .box-link-cta {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .clickable-box-link:hover .box-link-cta {
+      text-decoration: underline;
+    }
+
+    /* ==========================================================================
+       8. SKILLS LIST & ABOUT ME PANEL
+       ========================================================================== */
+    .skills-grid {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .skill-pill-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-left: 3px solid var(--accent-cyan);
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-pure-white);
+    }
+
+    .about-box {
+      background-color: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-left: 4px solid var(--accent-cyan);
+      border-radius: 10px;
+      padding: 28px;
+      max-width: 900px;
+    }
+
+    .about-text {
+      font-size: 1.18rem;
+      line-height: 1.8;
+      color: #eef2f7;
+    }
+
+    /* ==========================================================================
+       9. FOOTER
+       ========================================================================== */
+    .portfolio-footer {
+      text-align: center;
+      padding: 24px 20px;
+      border-top: 1px solid var(--bg-card-border);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* ==========================================================================
+       10. RESPONSIVE BREAKPOINTS (MOBILE 9:16, TABLET, LAPTOP, DESKTOP 16:9)
+       ========================================================================== */
+    @media (max-width: 860px) {
+      .hero-stage {
+        min-height: 360px;
+      }
+
+      .header-inner {
+        padding: 16px 16px 22px 16px;
+        gap: 20px;
+      }
+
+      .aicore-ring {
+        width: 50px;
+        height: 50px;
+      }
+
+      .brand-title-wrapper {
+        min-width: 195px;
+      }
+
+      .brand-typing-title {
+        font-size: 1.35rem;
+      }
+
+      .profile-center-right-wrapper {
+        justify-content: center;
+        padding-right: 0;
+      }
+
+      .profile-name {
+        font-size: 1.85rem;
+      }
+
+      .action-buttons {
+        gap: 14px;
+      }
+
+      .icon-action-item {
+        min-width: 96px;
+      }
+
+      .icon-circle-box {
+        width: 54px;
+        height: 54px;
+      }
+
+      .icon-circle-box img {
+        width: 28px;
+        height: 28px;
+      }
+
+      .tab-list {
+        padding: 0 16px;
+        gap: 18px;
+      }
+
+      .tab-btn {
+        font-size: 1rem;
+        padding: 11px 4px;
+      }
+
+      .main-content {
+        padding: 22px 16px 36px 16px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid-layout,
+      .clickable-list-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-box {
+        padding: 20px;
+      }
+
+      .about-text {
+        font-size: 1.08rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Skip Links -->
+  <div class="skip-links-bar">
+    <a href="#profile-identity" class="skip-link" id="skipToProfile">Skip to Name and Tagline</a>
+    <a href="#section-nav" class="skip-link" id="skipToTabs">Skip to Tabs Area</a>
+  </div>
+
+  <!-- Top Header -->
+  <header class="portfolio-header" role="banner">
+    <div class="hero-stage">
+      <!-- Background Image Layer -->
+      <div class="header-bg-media" aria-hidden="true">
+        <picture>
+          <source media="(max-width: 768px)" srcset="mobileui.jpg">
+          <img src="desktopui.jpg" alt="" class="header-bg-img">
+        </picture>
+        <div class="header-bg-overlay"></div>
+      </div>
+
+      <div class="header-inner">
+        <!-- Top-Left Corner: AI Core Animation + Typing Title -->
+        <div class="brand-top-left">
+          <div class="aicore-ring" role="img" aria-label="Animated AI core visual emblem">
+            <video class="aicore-video" autoplay loop muted playsinline aria-hidden="true">
+              <source src="aicore.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="brand-title-wrapper">
+            <span class="sr-only">Personal Portfolio</span>
+            <span class="brand-typing-title" id="brandTypingTitle" aria-hidden="true">Personal Portfolio</span>
+          </div>
+        </div>
+
+        <!-- Center-Middle-Right: Keyboard & Screen-Reader Focusable Name, Tagline, Subtext & Custom Icon Links -->
+        <div class="profile-center-right-wrapper">
+          <div class="profile-identity-block" id="profile-identity" tabindex="0" role="region" aria-label="Navan Krishna P.P — Accessibility For Everyone. Building inclusive, screen-reader-first, and human-centered digital tools.">
+            <div class="profile-title-row">
+              <h1 class="profile-name serif-font">Navan Krishna P.P</h1>
+              <span class="verified-badge" role="img" aria-label="Verified Profile">&#10004;</span>
+            </div>
+            <p class="profile-motto">Accessibility For Everyone</p>
+            <p class="profile-subtext">Building inclusive, screen-reader-first, and human-centered digital tools.</p>
+
+            <div class="action-buttons" role="group" aria-label="Social and Contact Links">
+              <a href="https://www.linkedin.com/in/navankrishna-pp/" target="_blank" rel="noopener noreferrer" class="icon-action-item" aria-label="LinkedIn — Connect with me (opens in a new tab)">
+                <span class="icon-circle-box" aria-hidden="true">
+                  <img src="linkedin.png" alt="">
+                </span>
+                <span class="icon-action-label" aria-hidden="true">Connect with me</span>
+              </a>
+
+              <a href="https://github.com/navankrishnapp-lab" target="_blank" rel="noopener noreferrer" class="icon-action-item" aria-label="GitHub — Explore GitHub (opens in a new tab)">
+                <span class="icon-circle-box" aria-hidden="true">
+                  <img src="github.png" alt="">
+                </span>
+                <span class="icon-action-label" aria-hidden="true">Explore GitHub</span>
+              </a>
+
+              <a href="mailto:navankrishnapp@gmail.com" class="icon-action-item" aria-label="Gmail — Mail me at navankrishnapp@gmail.com">
+                <span class="icon-circle-box" aria-hidden="true">
+                  <img src="gmail.png" alt="">
+                </span>
+                <span class="icon-action-label" aria-hidden="true">Mail me</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs-nav" id="section-nav" aria-label="Portfolio Tabs">
+      <div class="tab-list">
+        <button type="button" aria-pressed="true" aria-controls="panel-projects" id="tab-projects" class="tab-btn active">Projects</button>
+        <button type="button" aria-pressed="false" aria-controls="panel-badges" id="tab-badges" class="tab-btn">Badges</button>
+        <button type="button" aria-pressed="false" aria-controls="panel-skills" id="tab-skills" class="tab-btn">Skills</button>
+        <button type="button" aria-pressed="false" aria-controls="panel-about" id="tab-about" class="tab-btn">About Me</button>
+        <button type="button" aria-pressed="false" aria-controls="panel-source" id="tab-source" class="tab-btn">Source-Codes</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Live Announcement Region for Screen Readers -->
+  <div id="sr-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Main Content Area -->
+  <main class="main-content" id="main-content">
+
+    <!-- 1. PROJECTS TAB PANEL -->
+    <section id="panel-projects" aria-labelledby="heading-projects" class="tab-panel" data-tab-id="tab-projects">
+      <div class="panel-header-row">
+        <h2 class="section-heading" id="heading-projects" tabindex="0">Accessibility-First Projects</h2>
+        <button type="button" class="panel-skip-btn" data-return-tab="tab-projects">Skip to Tabs Area</button>
+      </div>
+      <div class="grid-layout">
+
+        <article class="card" tabindex="0" aria-label="Project 1: Navic Echo. An accessibility-first typing practice web app built for screen reader users. It announces each word along with clear letter-by-letter spelling so blind and visually impaired learners can build typing speed and accuracy with zero visual barriers.">
+          <div>
+            <h3 class="item-title">Navic Echo</h3>
+            <p class="item-desc">An accessibility-first typing practice web app built for screen reader users. It announces each word along with clear letter-by-letter spelling so blind and visually impaired learners can build typing speed and accuracy with zero visual barriers.</p>
+          </div>
+          <a href="https://navankrishnapp-lab.github.io/NavicEcho/" target="_blank" rel="noopener noreferrer" class="card-action-link" aria-label="Open Navic Echo live web application (opens in a new tab)">Open Project</a>
+        </article>
+
+        <article class="card" tabindex="0" aria-label="Project 2: Seventh Vision-X. An accessibility-first, privacy-focused browser document reader designed for blind and visually impaired readers. It cleans out distracting symbols and emojis before reading PDF and text files sentence by sentence alongside TalkBack and NVDA.">
+          <div>
+            <h3 class="item-title">Seventh Vision-X</h3>
+            <p class="item-desc">An accessibility-first, privacy-focused browser document reader designed for blind and visually impaired readers. It cleans out distracting symbols and emojis before reading PDF and text files sentence by sentence alongside TalkBack and NVDA.</p>
+          </div>
+          <a href="https://navankrishnapp-lab.github.io/SeventhVision-X/" target="_blank" rel="noopener noreferrer" class="card-action-link" aria-label="Open Seventh Vision-X live web application (opens in a new tab)">Open Project</a>
+        </article>
+
+        <article class="card" tabindex="0" aria-label="Project 3: eXponentialBridge Focus. An accessibility-first local AI assistant engineered with predictable keyboard navigation, live screen reader announcements, and clean spoken responses. It lets users ask questions and read local PDFs offline without clutter or focus traps.">
+          <div>
+            <h3 class="item-title">eXponentialBridge Focus</h3>
+            <p class="item-desc">An accessibility-first local AI assistant engineered with predictable keyboard navigation, live screen reader announcements, and clean spoken responses. It lets users ask questions and read local PDFs offline without clutter or focus traps.</p>
+          </div>
+          <a href="https://github.com/navankrishnapp-lab/Full_stack_OpensourceAI-application_Sourcecode" target="_blank" rel="noopener noreferrer" class="card-action-link" aria-label="Open eXponentialBridge Focus project on GitHub (opens in a new tab)">Open Project</a>
+        </article>
+
+        <article class="card" tabindex="0" aria-label="Project 4: Neural Voice Artists. An accessibility-first text-to-speech studio built for blind and visually impaired students and researchers. It converts large study notes into natural neural speech and downloadable MP3 files with full keyboard control and zero paywalls.">
+          <div>
+            <h3 class="item-title">Neural Voice Artists</h3>
+            <p class="item-desc">An accessibility-first text-to-speech studio built for blind and visually impaired students and researchers. It converts large study notes into natural neural speech and downloadable MP3 files with full keyboard control and zero paywalls.</p>
+          </div>
+          <a href="https://github.com/navankrishnapp-lab/NeuralVoiceArtists" target="_blank" rel="noopener noreferrer" class="card-action-link" aria-label="Open Neural Voice Artists project on GitHub (opens in a new tab)">Open Project</a>
+        </article>
+
+        <article class="card" tabindex="0" aria-label="Project 5: A11y Metric Pro. An accessibility-first, keyboard-driven audio and video editing suite made for blind and low-vision creators. It provides spoken live status updates and simple hotkeys for precise trimming and volume balancing without needing a mouse.">
+          <div>
+            <h3 class="item-title">A11y Metric Pro</h3>
+            <p class="item-desc">An accessibility-first, keyboard-driven audio and video editing suite made for blind and low-vision creators. It provides spoken live status updates and simple hotkeys for precise trimming and volume balancing without needing a mouse.</p>
+          </div>
+          <a href="https://github.com/navankrishnapp-lab/A11y_Metric-Pro" target="_blank" rel="noopener noreferrer" class="card-action-link" aria-label="Open A11y Metric Pro project on GitHub (opens in a new tab)">Open Project</a>
+        </article>
+
+        <article class="card" tabindex="0" aria-label="Project 6: AI Web Application Sci-Fi UI. An accessibility-first offline AI assistant pairing a high-contrast dark interface with full keyboard shortcuts and clean spoken feedback. Users can read documents, monitor system health, and interact privately on their own device.">
+          <div>
+            <h3 class="item-title">AI Web Application Sci-Fi UI</h3>
+            <p class="item-desc">An accessibility-first offline AI assistant pairing a high-contrast dark interface with full keyboard shortcuts and clean spoken feedback. Users can read documents, monitor system health, and interact privately on their own device.</p>
+          </div>
+          <a href="https://github.com/navankrishnapp-lab/AI-Web_application_sci-fi_UI" target="_blank" rel="noopener noreferrer" class="card-action-link" aria-label="Open AI Web Application Sci-Fi UI project on GitHub (opens in a new tab)">Open Project</a>
+        </article>
+
+      </div>
+      <div class="panel-end-row">
+        <button type="button" class="panel-skip-btn panel-end-return" data-return-tab="tab-projects">End of Projects — Return to Tabs Area</button>
+      </div>
+    </section>
+
+    <!-- 2. BADGES TAB PANEL -->
+    <section id="panel-badges" aria-labelledby="heading-badges" class="tab-panel" data-tab-id="tab-badges" hidden>
+      <div class="panel-header-row">
+        <h2 class="section-heading" id="heading-badges" tabindex="0">Microsoft Learn Badges</h2>
+        <button type="button" class="panel-skip-btn" data-return-tab="tab-badges">Skip to Tabs Area</button>
+      </div>
+      <div class="clickable-list-grid">
+
+        <a href="https://learn.microsoft.com/api/achievements/share/en-in/NavanKrishnaPP-2050/ABYMKQZ7?sharingId=DA2CA8650FD9BC88" target="_blank" rel="noopener noreferrer" class="clickable-box-link" aria-label="Build Accessible SharePoint Sites — Click to view on Microsoft Learn (opens in a new tab)">
+          <span class="box-link-title">Build Accessible SharePoint Sites</span>
+          <span class="box-link-cta" aria-hidden="true">Click to view</span>
+        </a>
+
+        <a href="https://learn.microsoft.com/api/achievements/share/en-in/NavanKrishnaPP-2050/8VUQTT6W?sharingId=DA2CA8650FD9BC88" target="_blank" rel="noopener noreferrer" class="clickable-box-link" aria-label="Create Accessible Content — Click to view on Microsoft Learn (opens in a new tab)">
+          <span class="box-link-title">Create Accessible Content</span>
+          <span class="box-link-cta" aria-hidden="true">Click to view</span>
+        </a>
+
+        <a href="https://learn.microsoft.com/api/achievements/share/en-in/NavanKrishnaPP-2050/ZJRTZWG2?sharingId=DA2CA8650FD9BC88" target="_blank" rel="noopener noreferrer" class="clickable-box-link" aria-label="Web Accessibility Principles and Guidelines — Click to view on Microsoft Learn (opens in a new tab)">
+          <span class="box-link-title">Web Accessibility Principles and Guidelines</span>
+          <span class="box-link-cta" aria-hidden="true">Click to view</span>
+        </a>
+
+        <a href="https://learn.microsoft.com/api/achievements/share/en-in/NavanKrishnaPP-2050/U76Z9JY3?sharingId=DA2CA8650FD9BC88" target="_blank" rel="noopener noreferrer" class="clickable-box-link" aria-label="Introduction to Accessibility — Click to view on Microsoft Learn (opens in a new tab)">
+          <span class="box-link-title">Introduction to Accessibility</span>
+          <span class="box-link-cta" aria-hidden="true">Click to view</span>
+        </a>
+
+        <a href="https://learn.microsoft.com/api/achievements/share/en-in/NavanKrishnaPP-2050/WM3QUYXN?sharingId=DA2CA8650FD9BC88" target="_blank" rel="noopener noreferrer" class="clickable-box-link" aria-label="Create Accessible AI Experiences — Click to view on Microsoft Learn (opens in a new tab)">
+          <span class="box-link-title">Create Accessible AI Experiences</span>
+          <span class="box-link-cta" aria-hidden="true">Click to view</span>
+        </a>
+
+      </div>
+      <div class="panel-end-row">
+        <button type="button" class="panel-skip-btn panel-end-return" data-return-tab="tab-badges">End of Badges — Return to Tabs Area</button>
+      </div>
+    </section>
+
+    <!-- 3. SKILLS TAB PANEL -->
+    <section id="panel-skills" aria-labelledby="heading-skills" class="tab-panel" data-tab-id="tab-skills" hidden>
+      <div class="panel-header-row">
+        <h2 class="section-heading" id="heading-skills" tabindex="0">Core Skills</h2>
+        <button type="button" class="panel-skip-btn" data-return-tab="tab-skills">Skip to Tabs Area</button>
+      </div>
+      <ul class="skills-grid" aria-label="Core Skills List">
+        <li class="skill-pill-card" tabindex="0">Prompt Engineering</li>
+        <li class="skill-pill-card" tabindex="0">AI-Assisted Development</li>
+        <li class="skill-pill-card" tabindex="0">Assistive Technology Research</li>
+        <li class="skill-pill-card" tabindex="0">Web Accessibility</li>
+        <li class="skill-pill-card" tabindex="0">Accessibility Testing</li>
+        <li class="skill-pill-card" tabindex="0">Accessibility Focused Design</li>
+        <li class="skill-pill-card" tabindex="0">Problem Solving</li>
+        <li class="skill-pill-card" tabindex="0">Critical Thinking</li>
+        <li class="skill-pill-card" tabindex="0">Project Planning</li>
+        <li class="skill-pill-card" tabindex="0">Content Creation</li>
+        <li class="skill-pill-card" tabindex="0">AI Assisted Solution Building</li>
+      </ul>
+      <div class="panel-end-row">
+        <button type="button" class="panel-skip-btn panel-end-return" data-return-tab="tab-skills">End of Skills — Return to Tabs Area</button>
+      </div>
+    </section>
+
+    <!-- 4. ABOUT ME TAB PANEL -->
+    <section id="panel-about" aria-labelledby="heading-about" class="tab-panel" data-tab-id="tab-about" hidden>
+      <div class="panel-header-row">
+        <h2 class="section-heading" id="heading-about" tabindex="0">About Me</h2>
+        <button type="button" class="panel-skip-btn" data-return-tab="tab-about">Skip to Tabs Area</button>
+      </div>
+      <article class="about-box" tabindex="0">
+        <p class="about-text">
+          I am passionate about technology, accessibility-oriented research, and AI-assisted innovation. My goal is to explore ideas, solve real-world accessibility challenges, and contribute to building a more inclusive digital space where technology is accessible to everyone, regardless of their abilities. I believe accessibility is not an option but a fundamental part of a better digital future.
+        </p>
+      </article>
+      <div class="panel-end-row">
+        <button type="button" class="panel-skip-btn panel-end-return" data-return-tab="tab-about">End of About Me — Return to Tabs Area</button>
+      </div>
+    </section>
+
+    <!-- 5. SOURCE-CODES TAB PANEL -->
+    <section id="panel-source" aria-labelledby="heading-source" class="tab-panel" data-tab-id="tab-source" hidden>
+      <div class="panel-header-row">
+        <h2 class="section-heading" id="heading-source" tabindex="0">Open-Source Repositories</h2>
+        <button type="button" class="panel-skip-btn" data-return-tab="tab-source">Skip to Tabs Area</button>
+      </div>
+      <div class="clickable-list-grid">
+
+        <a href="https://github.com/navankrishnapp-lab/NavicEcho" target="_blank" rel="noopener noreferrer" class="clickable-box-link" aria-label="Navic Echo — Click To View source code on GitHub (opens in a new tab)">
+          <span class="box-link-title">Navic Echo</span>
+          <span class="box-link-cta" aria-hidden="true">Click To View</span>
+        </a>
+
+        <a href="https://github.com/navankrishnapp-lab/SeventhVision-X" target="_blank" rel="noopener noreferrer" class="clickable-box-link" aria-label="Seventh Vision-X — Click To View source code on GitHub (opens in a new tab)">
+          <span class="box-link-title">Seventh Vision-X</span>
+          <span class="box-link-cta" aria-hidden="true">Click To View</span>
+        </a>
+
+        <a href="https://github.com/navankrishnapp-lab/Full_stack_OpensourceAI-application_Sourcecode" target="_blank" rel="noopener noreferrer" class="clickable-box-link" aria-label="eXponentialBridge Focus — Click To View source code on GitHub (opens in a new tab)">
+          <span class="box-link-title">eXponentialBridge Focus</span>
+          <span class="box-link-cta" aria-hidden="true">Click To View</span>
+        </a>
+
+        <a href="https://github.com/navankrishnapp-lab/NeuralVoiceArtists" target="_blank" rel="noopener noreferrer" class="clickable-box-link" aria-label="Neural Voice Artists — Click To View source code on GitHub (opens in a new tab)">
+          <span class="box-link-title">Neural Voice Artists</span>
+          <span class="box-link-cta" aria-hidden="true">Click To View</span>
+        </a>
+
+        <a href="https://github.com/navankrishnapp-lab/A11y_Metric-Pro" target="_blank" rel="noopener noreferrer" class="clickable-box-link" aria-label="A11y Metric Pro — Click To View source code on GitHub (opens in a new tab)">
+          <span class="box-link-title">A11y Metric Pro</span>
+          <span class="box-link-cta" aria-hidden="true">Click To View</span>
+        </a>
+
+        <a href="https://github.com/navankrishnapp-lab/AI-Web_application_sci-fi_UI" target="_blank" rel="noopener noreferrer" class="clickable-box-link" aria-label="AI Web Application Sci-Fi UI — Click To View source code on GitHub (opens in a new tab)">
+          <span class="box-link-title">AI Web Application Sci-Fi UI</span>
+          <span class="box-link-cta" aria-hidden="true">Click To View</span>
+        </a>
+
+      </div>
+      <div class="panel-end-row">
+        <button type="button" class="panel-skip-btn panel-end-return" data-return-tab="tab-source">End of Source-Codes — Return to Tabs Area</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="portfolio-footer" role="contentinfo">
+    <p>Navan Krishna P.P &mdash; Accessibility For Everyone</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // ========================================================================
+      // 1. 10-SECOND LOOPING TYPING ANIMATION FOR "Personal Portfolio" (NO CURSOR)
+      // ========================================================================
+      const brandTitleEl = document.getElementById("brandTypingTitle");
+      const brandText = "Personal Portfolio";
+      const typingIntervalMs = 70;
+      const restartCycleMs = 10000;
+      let typeTimer = null;
+
+      function startBrandTyping() {
+        if (!brandTitleEl) return;
+        if (typeTimer) clearTimeout(typeTimer);
+
+        brandTitleEl.textContent = "";
+        let index = 0;
+
+        function typeNextChar() {
+          if (index < brandText.length) {
+            brandTitleEl.textContent += brandText.charAt(index);
+            index++;
+            typeTimer = setTimeout(typeNextChar, typingIntervalMs);
+          }
+        }
+
+        typeNextChar();
+      }
+
+      startBrandTyping();
+      setInterval(startBrandTyping, restartCycleMs);
+
+      // ========================================================================
+      // 2. FULL TAB-KEY & SCREEN-READER FLOW ENGINE (NVDA, JAWS, TALKBACK, VOICEOVER)
+      //    - Pressing Enter/Space on a tab opens it and puts focus on its H2 heading.
+      //    - Pressing Tab walks sequentially through EVERY item inside the tab.
+      //    - Pressing Tab past the end of the tab content automatically returns
+      //      focus back to the active tab in the Tabs Area!
+      //    - Clicking/pressing Enter on any "Skip to Tabs Area" button jumps
+      //      immediately back to the Tabs Area.
+      // ========================================================================
+      const navButtons = Array.from(document.querySelectorAll(".tab-btn"));
+      const panels = Array.from(document.querySelectorAll(".tab-panel"));
+      const srStatus = document.getElementById("sr-status");
+
+      function returnToTabsArea(preferredTabId) {
+        const targetTab =
+          (preferredTabId && document.getElementById(preferredTabId)) ||
+          navButtons.find((b) => b.getAttribute("aria-pressed") === "true") ||
+          navButtons[0];
+
+        if (targetTab) {
+          targetTab.focus();
+          if (srStatus) {
+            srStatus.textContent = `Returned to Tabs Area: ${targetTab.textContent.trim()} tab.`;
+          }
+        }
+      }
+
+      function showSection(targetBtn, moveFocusInside = false) {
+        if (!targetBtn) return;
+
+        navButtons.forEach((btn) => {
+          btn.setAttribute("aria-pressed", "false");
+          btn.classList.remove("active");
+        });
+
+        panels.forEach((panel) => {
+          panel.hidden = true;
+        });
+
+        targetBtn.setAttribute("aria-pressed", "true");
+        targetBtn.classList.add("active");
+
+        const panelId = targetBtn.getAttribute("aria-controls");
+        const activePanel = document.getElementById(panelId);
+
+        if (activePanel) {
+          activePanel.hidden = false;
+
+          if (moveFocusInside) {
+            const heading = activePanel.querySelector("h2");
+            if (heading) {
+              heading.focus();
+            }
+          }
+        }
+
+        if (srStatus) {
+          srStatus.textContent = `${targetBtn.textContent.trim()} tab selected. Press Tab to step through all items inside, or press Skip to Tabs Area.`;
+        }
+      }
+
+      // Open section & enter its content on Click / Enter / Space
+      navButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          showSection(btn, true);
+        });
+
+        btn.addEventListener("keydown", (event) => {
+          const idx = navButtons.indexOf(btn);
+          if (event.key === "ArrowRight") {
+            event.preventDefault();
+            navButtons[(idx + 1) % navButtons.length].focus();
+          } else if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            navButtons[(idx - 1 + navButtons.length) % navButtons.length].focus();
+          }
+        });
+      });
+
+      // Any "Skip to Tabs Area" or "End of ... — Return to Tabs Area" button
+      const skipButtons = Array.from(document.querySelectorAll(".panel-skip-btn"));
+      skipButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          returnToTabsArea(btn.getAttribute("data-return-tab"));
+        });
+      });
+
+      // Automatic Tab-Loop Back: when Tab is pressed on the last element inside
+      // any open tab panel, focus automatically returns to the Tabs Area!
+      panels.forEach((panel) => {
+        const endReturnBtn = panel.querySelector(".panel-end-return");
+        if (endReturnBtn) {
+          endReturnBtn.addEventListener("keydown", (event) => {
+            if (event.key === "Tab" && !event.shiftKey) {
+              event.preventDefault();
+              returnToTabsArea(panel.getAttribute("data-tab-id"));
+            }
+          });
+        }
+      });
+
+      // Top Skip Links
+      const skipToProfile = document.getElementById("skipToProfile");
+      if (skipToProfile) {
+        skipToProfile.addEventListener("click", (e) => {
+          e.preventDefault();
+          const profileBlock = document.getElementById("profile-identity");
+          if (profileBlock) profileBlock.focus();
+        });
+      }
+
+      const skipToTabs = document.getElementById("skipToTabs");
+      if (skipToTabs) {
+        skipToTabs.addEventListener("click", (e) => {
+          e.preventDefault();
+          returnToTabsArea();
+        });
+      }
+    });
+  </script>
+</body>
+</html>
