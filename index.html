@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Navan Krishna P.P | Personal Portfolio</title>
-  <meta name="description" content="Personal Portfolio of Navan Krishna P.P — Accessibility For Everyone. Screen-reader-first open-source projects, badges, skills, and repositories.">
+  <meta name="description" content="Open-source projects, Microsoft Learn badges, skills, and source code built for everyone.">
   <style>
     /* ==========================================================================
        1. ROOT VARIABLES & HIGH-CONTRAST PALETTE
@@ -15,14 +15,16 @@
       --bg-card-hover: #0f131a;
       --bg-card-border: #1f2937;
       --text-pure-white: #ffffff;
-      --text-muted: #c8d3e0;
+      --text-muted: #d0dae6;
       --accent-cyan: #00e5ff;
-      --accent-outline-cyan: rgba(0, 229, 255, 0.45);
+      --accent-outline-cyan: rgba(0, 229, 255, 0.5);
       --focus-ring: #00e5ff;
 
       --font-serif: "Times New Roman", Times, serif;
       --font-sans: "Calibri", "Segoe UI", Arial, sans-serif;
       --font-display: "Georgia", "Palatino Linotype", "Book Antiqua", serif;
+      --font-tabs: "Agency FB", "Bahnschrift Condensed", "Arial Narrow", sans-serif;
+      --font-icon-label: "Trebuchet MS", "Lucida Sans Unicode", "Segoe UI", sans-serif;
     }
 
     * {
@@ -90,11 +92,11 @@
     [tabindex="-1"]:focus-visible {
       outline: 2px solid var(--focus-ring) !important;
       outline-offset: 4px !important;
-      box-shadow: 0 0 12px rgba(0, 229, 255, 0.75) !important;
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.8) !important;
     }
 
     /* ==========================================================================
-       3. HERO HEADER WITH 16:9 DESKTOP & 9:16 MOBILE BACKGROUND
+       3. HERO HEADER WITH PROPER 16:9 DESKTOP & 9:16 MOBILE BACKGROUND
        ========================================================================== */
     .portfolio-header {
       position: relative;
@@ -106,7 +108,7 @@
     .hero-stage {
       position: relative;
       width: 100%;
-      min-height: 310px;
+      min-height: 320px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -127,7 +129,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center center;
+      object-position: center top;
       display: block;
     }
 
@@ -136,9 +138,9 @@
       inset: 0;
       background: linear-gradient(
         180deg,
-        rgba(0, 0, 0, 0.48) 0%,
-        rgba(0, 0, 0, 0.65) 60%,
-        rgba(0, 0, 0, 0.94) 100%
+        rgba(0, 0, 0, 0.35) 0%,
+        rgba(0, 0, 0, 0.58) 55%,
+        rgba(0, 0, 0, 0.92) 100%
       );
       z-index: 1;
       pointer-events: none;
@@ -148,13 +150,13 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      padding: 20px 28px 26px 24px;
+      padding: 20px 28px 28px 24px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 20px;
     }
 
-    /* Top-Left Corner: AI Core + Typing Title */
+    /* Top-Left Corner: AI Core Animation + Typing Title */
     .brand-top-left {
       display: flex;
       align-items: center;
@@ -167,7 +169,7 @@
       height: 60px;
       border-radius: 50%;
       border: 2px solid var(--text-pure-white);
-      box-shadow: 0 0 14px rgba(0, 229, 255, 0.5);
+      box-shadow: 0 0 14px rgba(0, 229, 255, 0.55);
       overflow: hidden;
       background-color: var(--bg-pure-black);
       flex-shrink: 0;
@@ -196,7 +198,7 @@
       letter-spacing: 0.6px;
       color: var(--text-pure-white);
       line-height: 1.2;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
     }
 
     /* Center-Middle-Right Identity & Labeled Custom Icon Links */
@@ -219,59 +221,41 @@
       border-radius: 10px;
     }
 
-    .profile-title-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
     .profile-name {
-      font-size: 2.3rem;
+      font-size: 2.35rem;
       font-weight: 700;
       letter-spacing: 0.4px;
       line-height: 1.15;
       color: var(--text-pure-white);
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.92);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
     }
 
-    .verified-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background-color: var(--text-muted);
-      color: var(--bg-pure-black);
-      font-size: 0.82rem;
-      font-weight: 700;
-      border-radius: 50%;
-      width: 22px;
-      height: 22px;
-      flex-shrink: 0;
-    }
-
+    /* Italic Tagline & Subtitle */
     .profile-motto {
       color: var(--accent-cyan);
-      font-size: 1.12rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      letter-spacing: 0.3px;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.92);
+      font-style: italic;
+      letter-spacing: 0.4px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
     }
 
     .profile-subtext {
       color: var(--text-muted);
-      font-size: 1rem;
+      font-size: 1.02rem;
+      font-style: italic;
       line-height: 1.45;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.92);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
     }
 
+    /* Custom Action Icons (Desktop: 3 in a row | Mobile: 1 top, 2 below) */
     .action-buttons {
       display: flex;
       align-items: flex-start;
       justify-content: center;
-      gap: 24px;
+      gap: 26px;
       flex-wrap: wrap;
-      margin-top: 12px;
+      margin-top: 14px;
     }
 
     .icon-action-item {
@@ -281,7 +265,7 @@
       gap: 8px;
       text-decoration: none;
       color: var(--text-pure-white);
-      min-width: 112px;
+      min-width: 118px;
       padding: 6px 8px;
       border-radius: 12px;
       transition: transform 0.15s ease;
@@ -295,29 +279,33 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 60px;
-      height: 60px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
-      background-color: rgba(10, 12, 16, 0.9);
-      border: 1.5px solid var(--bg-card-border);
+      background-color: rgba(12, 16, 22, 0.95);
+      border: 2px solid rgba(0, 229, 255, 0.45);
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.22);
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .icon-action-item:hover .icon-circle-box {
       border-color: var(--accent-cyan);
-      box-shadow: 0 0 15px rgba(0, 229, 255, 0.45);
+      box-shadow: 0 0 18px rgba(0, 229, 255, 0.55);
     }
 
     .icon-circle-box img {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       object-fit: contain;
       display: block;
+      filter: brightness(1.18) contrast(1.15);
     }
 
     .icon-action-label {
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-family: var(--font-icon-label);
+      font-size: 0.94rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
       color: var(--text-pure-white);
       text-align: center;
       line-height: 1.25;
@@ -329,7 +317,7 @@
     }
 
     /* ==========================================================================
-       4. SECTION NAVIGATION TABS
+       4. SECTION NAVIGATION TABS (AGENCY FB FONT)
        ========================================================================== */
     .tabs-nav {
       position: relative;
@@ -341,7 +329,7 @@
 
     .tab-list {
       display: flex;
-      gap: 24px;
+      gap: 28px;
       overflow-x: auto;
       justify-content: flex-start;
       max-width: 1200px;
@@ -356,10 +344,11 @@
       border: none;
       border-bottom: 3px solid transparent;
       color: var(--text-muted);
-      padding: 14px 6px;
-      font-family: var(--font-sans);
-      font-size: 1.08rem;
-      font-weight: 600;
+      padding: 13px 6px;
+      font-family: var(--font-tabs);
+      font-size: 1.38rem;
+      font-weight: 700;
+      letter-spacing: 0.9px;
       cursor: pointer;
       white-space: nowrap;
       transition: color 0.2s ease, border-color 0.2s ease;
@@ -375,7 +364,7 @@
     }
 
     /* ==========================================================================
-       5. MAIN CONTENT & PANELS
+       5. MAIN CONTENT & PANELS (ALL TEXT IN TIMES NEW ROMAN)
        ========================================================================== */
     .main-content {
       padding: 30px 32px 48px 32px;
@@ -383,6 +372,18 @@
       max-width: 1200px;
       margin: 0 auto;
       width: 100%;
+      font-family: var(--font-serif);
+    }
+
+    .tab-panel,
+    .tab-panel h2,
+    .tab-panel h3,
+    .tab-panel p,
+    .tab-panel a,
+    .tab-panel span,
+    .tab-panel li,
+    .tab-panel button {
+      font-family: var(--font-serif);
     }
 
     .tab-panel[hidden] {
@@ -399,7 +400,8 @@
     }
 
     .section-heading {
-      font-size: 1.55rem;
+      font-size: 1.65rem;
+      font-weight: 700;
       border-left: 4px solid var(--accent-cyan);
       padding-left: 12px;
       color: var(--text-pure-white);
@@ -411,9 +413,8 @@
       color: var(--accent-cyan);
       padding: 7px 14px;
       border-radius: 6px;
-      font-family: var(--font-sans);
-      font-size: 0.92rem;
-      font-weight: 600;
+      font-size: 0.96rem;
+      font-weight: 700;
       cursor: pointer;
       transition: background-color 0.2s ease, color 0.2s ease;
     }
@@ -455,17 +456,17 @@
     }
 
     .item-title {
-      font-size: 1.25rem;
+      font-size: 1.32rem;
       font-weight: 700;
       margin-bottom: 10px;
       color: var(--text-pure-white);
     }
 
     .item-desc {
-      font-size: 1.02rem;
+      font-size: 1.08rem;
       color: var(--text-muted);
       margin-bottom: 18px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .card-action-link {
@@ -478,8 +479,8 @@
       border-radius: 6px;
       color: var(--accent-cyan);
       text-decoration: none;
-      font-weight: 600;
-      font-size: 0.96rem;
+      font-weight: 700;
+      font-size: 1rem;
       margin-top: auto;
       transition: background-color 0.2s ease, color 0.2s ease;
     }
@@ -519,15 +520,15 @@
     }
 
     .box-link-title {
-      font-size: 1.12rem;
+      font-size: 1.18rem;
       font-weight: 700;
       color: var(--text-pure-white);
       line-height: 1.4;
     }
 
     .box-link-cta {
-      font-size: 0.92rem;
-      font-weight: 600;
+      font-size: 0.98rem;
+      font-weight: 700;
       color: var(--accent-cyan);
       white-space: nowrap;
       flex-shrink: 0;
@@ -553,8 +554,8 @@
       border-left: 3px solid var(--accent-cyan);
       border-radius: 8px;
       padding: 16px 20px;
-      font-size: 1.05rem;
-      font-weight: 600;
+      font-size: 1.12rem;
+      font-weight: 700;
       color: var(--text-pure-white);
     }
 
@@ -568,8 +569,8 @@
     }
 
     .about-text {
-      font-size: 1.18rem;
-      line-height: 1.8;
+      font-size: 1.24rem;
+      line-height: 1.85;
       color: #eef2f7;
     }
 
@@ -581,25 +582,40 @@
       padding: 24px 20px;
       border-top: 1px solid var(--bg-card-border);
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.98rem;
+      font-family: var(--font-serif);
     }
 
     /* ==========================================================================
-       10. RESPONSIVE BREAKPOINTS (MOBILE 9:16, TABLET, LAPTOP, DESKTOP 16:9)
+       10. MOBILE & TABLET RESPONSIVE STYLING (9:16 MOBILE JPG + 1 TOP, 2 BELOW ICONS)
        ========================================================================== */
     @media (max-width: 860px) {
       .hero-stage {
-        min-height: 360px;
+        min-height: 460px;
+      }
+
+      .header-bg-img {
+        object-fit: cover;
+        object-position: center center;
+      }
+
+      .header-bg-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.25) 0%,
+          rgba(0, 0, 0, 0.52) 48%,
+          rgba(0, 0, 0, 0.92) 100%
+        );
       }
 
       .header-inner {
-        padding: 16px 16px 22px 16px;
-        gap: 20px;
+        padding: 16px 14px 24px 14px;
+        gap: 24px;
       }
 
       .aicore-ring {
-        width: 50px;
-        height: 50px;
+        width: 52px;
+        height: 52px;
       }
 
       .brand-title-wrapper {
@@ -607,43 +623,83 @@
       }
 
       .brand-typing-title {
-        font-size: 1.35rem;
+        font-size: 1.38rem;
       }
 
+      /* Mobile Name & Tagline: Slightly Right of Center-Middle Screen */
       .profile-center-right-wrapper {
-        justify-content: center;
-        padding-right: 0;
+        justify-content: flex-end;
+        padding-right: 3%;
+        padding-left: 8%;
+        margin-top: 8px;
+      }
+
+      .profile-identity-block {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        max-width: 340px;
       }
 
       .profile-name {
-        font-size: 1.85rem;
+        font-size: 1.82rem;
+        line-height: 1.2;
       }
 
+      .profile-motto {
+        font-size: 1.05rem;
+      }
+
+      .profile-subtext {
+        font-size: 0.94rem;
+      }
+
+      /* Mobile Icons Pyramid Layout: 1 Top (LinkedIn) + 2 Below (GitHub & Gmail) */
       .action-buttons {
-        gap: 14px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+        gap: 16px 18px;
+        justify-items: center;
+        width: 100%;
+        max-width: 300px;
+        margin-top: 16px;
+      }
+
+      .icon-action-item:first-child {
+        grid-column: 1 / -1;
       }
 
       .icon-action-item {
-        min-width: 96px;
+        min-width: 115px;
+        padding: 6px;
       }
 
+      /* Larger & Higher-Contrast Icons on Mobile */
       .icon-circle-box {
-        width: 54px;
-        height: 54px;
+        width: 72px;
+        height: 72px;
+        background-color: rgba(14, 20, 28, 0.98);
+        border: 2.5px solid var(--accent-cyan);
+        box-shadow: 0 0 18px rgba(0, 229, 255, 0.42);
       }
 
       .icon-circle-box img {
-        width: 28px;
-        height: 28px;
+        width: 40px;
+        height: 40px;
+        filter: brightness(1.3) contrast(1.25);
+      }
+
+      .icon-action-label {
+        font-size: 0.95rem;
       }
 
       .tab-list {
         padding: 0 16px;
-        gap: 18px;
+        gap: 20px;
       }
 
       .tab-btn {
-        font-size: 1rem;
+        font-size: 1.28rem;
         padding: 11px 4px;
       }
 
@@ -664,7 +720,7 @@
       }
 
       .about-text {
-        font-size: 1.08rem;
+        font-size: 1.12rem;
       }
     }
   </style>
@@ -680,10 +736,10 @@
   <!-- Top Header -->
   <header class="portfolio-header" role="banner">
     <div class="hero-stage">
-      <!-- Background Image Layer -->
+      <!-- Background Image Layer: 16:9 desktopui.jpg on Desktop/Laptop, 9:16 mobileui.jpg on Mobile -->
       <div class="header-bg-media" aria-hidden="true">
         <picture>
-          <source media="(max-width: 768px)" srcset="mobileui.jpg">
+          <source media="(max-width: 860px)" srcset="mobileui.jpg">
           <img src="desktopui.jpg" alt="" class="header-bg-img">
         </picture>
         <div class="header-bg-overlay"></div>
@@ -703,13 +759,10 @@
           </div>
         </div>
 
-        <!-- Center-Middle-Right: Keyboard & Screen-Reader Focusable Name, Tagline, Subtext & Custom Icon Links -->
+        <!-- Center-Middle-Right: Name (No Verification Mark), Italic Taglines & Custom Labeled Icons -->
         <div class="profile-center-right-wrapper">
           <div class="profile-identity-block" id="profile-identity" tabindex="0" role="region" aria-label="Navan Krishna P.P — Accessibility For Everyone. Building inclusive, screen-reader-first, and human-centered digital tools.">
-            <div class="profile-title-row">
-              <h1 class="profile-name serif-font">Navan Krishna P.P</h1>
-              <span class="verified-badge" role="img" aria-label="Verified Profile">&#10004;</span>
-            </div>
+            <h1 class="profile-name serif-font">Navan Krishna P.P</h1>
             <p class="profile-motto">Accessibility For Everyone</p>
             <p class="profile-subtext">Building inclusive, screen-reader-first, and human-centered digital tools.</p>
 
@@ -740,7 +793,7 @@
       </div>
     </div>
 
-    <!-- Navigation Tabs -->
+    <!-- Navigation Tabs (Agency FB Font) -->
     <nav class="tabs-nav" id="section-nav" aria-label="Portfolio Tabs">
       <div class="tab-list">
         <button type="button" aria-pressed="true" aria-controls="panel-projects" id="tab-projects" class="tab-btn active">Projects</button>
@@ -755,7 +808,7 @@
   <!-- Live Announcement Region for Screen Readers -->
   <div id="sr-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
-  <!-- Main Content Area -->
+  <!-- Main Content Area (Times New Roman Font) -->
   <main class="main-content" id="main-content">
 
     <!-- 1. PROJECTS TAB PANEL -->
@@ -982,13 +1035,7 @@
       setInterval(startBrandTyping, restartCycleMs);
 
       // ========================================================================
-      // 2. FULL TAB-KEY & SCREEN-READER FLOW ENGINE (NVDA, JAWS, TALKBACK, VOICEOVER)
-      //    - Pressing Enter/Space on a tab opens it and puts focus on its H2 heading.
-      //    - Pressing Tab walks sequentially through EVERY item inside the tab.
-      //    - Pressing Tab past the end of the tab content automatically returns
-      //      focus back to the active tab in the Tabs Area!
-      //    - Clicking/pressing Enter on any "Skip to Tabs Area" button jumps
-      //      immediately back to the Tabs Area.
+      // 2. FULL SCREEN-READER & KEYBOARD NAVIGATION ENGINE
       // ========================================================================
       const navButtons = Array.from(document.querySelectorAll(".tab-btn"));
       const panels = Array.from(document.querySelectorAll(".tab-panel"));
@@ -1042,7 +1089,6 @@
         }
       }
 
-      // Open section & enter its content on Click / Enter / Space
       navButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
           showSection(btn, true);
@@ -1060,7 +1106,6 @@
         });
       });
 
-      // Any "Skip to Tabs Area" or "End of ... — Return to Tabs Area" button
       const skipButtons = Array.from(document.querySelectorAll(".panel-skip-btn"));
       skipButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -1068,8 +1113,6 @@
         });
       });
 
-      // Automatic Tab-Loop Back: when Tab is pressed on the last element inside
-      // any open tab panel, focus automatically returns to the Tabs Area!
       panels.forEach((panel) => {
         const endReturnBtn = panel.querySelector(".panel-end-return");
         if (endReturnBtn) {
@@ -1082,7 +1125,6 @@
         }
       });
 
-      // Top Skip Links
       const skipToProfile = document.getElementById("skipToProfile");
       if (skipToProfile) {
         skipToProfile.addEventListener("click", (e) => {
